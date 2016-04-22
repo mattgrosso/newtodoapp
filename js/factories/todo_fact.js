@@ -10,17 +10,17 @@
   var localStorageKey = "storedItems";
 
   if(!localStorage.storedItems){
-    localStorage.setItem(localStorageKey, JSON.stringify([]));
+    localStorage.setItem(localStorageKey, angular.toJson([]));
   }
 
   function updateLocalStorage(itemList) {
     localStorage.setItem(localStorageKey, angular.toJson(itemList));
-    console.log(localStorage.localStorageKey);
+    console.log(localStorage[localStorageKey]);
   }
 
   function toDoFactory() {
     return {
-      itemList: toDoList,
+      itemList: JSON.parse(localStorage[localStorageKey]),
       save: updateLocalStorage
     };
   }

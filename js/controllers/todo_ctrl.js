@@ -47,6 +47,7 @@
 
     this.deleteItem = function deleteItem(indexNumber) {
       this.itemList.splice(indexNumber, 1);
+      toDoFactoryObj.save(this.itemList);
     };
 
     this.deleteCompleted = function deleteCompleted() {
