@@ -21,6 +21,8 @@
 
     this.itemList = toDoFactoryObj.itemList;
 
+    var that = this;
+
     this.newItem = {
       text: '',
       completed: false,
@@ -44,6 +46,14 @@
 
     this.deleteItem = function deleteItem(indexNumber) {
       this.itemList.splice(indexNumber, 1);
+    };
+
+    this.deleteCompleted = function deleteCompleted() {
+      this.itemList.forEach(function removeCompleted(each, i) {
+        if(each.completed){
+          that.itemList.splice(i, 1);
+        }
+      });
     };
 
   }
