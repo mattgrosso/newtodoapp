@@ -34,47 +34,17 @@ I'm done.
 
             <ul class='items'>
               <li ng-repeat="item in todo.itemList">
-                <article>
-                    <button class='check'></button>
-                    <p>{{item.text}}</p>
-                    <input type='text' class='edit-todo' value='learn html'>
-                    <button class='delete'>X</button>
+                <article ng-class='{completed: item.completed, editing: item.editing}'>
+                    <button ng-click="item.completed = !item.completed" class='check'></button>
+                    <p ng-click="item.editing = !item.editing">{{item.text}}</p>
+                    <input ng-model="item.text" ng-keyup="todo.keyPress($event.keyCode, item)" type='text' class='edit-todo'>
+                    <button ng-click="todo.deleteItem($index)" class='delete'>X</button>
                 </article>
               </li>
-                <!-- example of existing item (incomplete)
-                <li>
-                    <article>
-                        <button class='check'></button>
-                        <p>learn html</p>
-                        <input type='text' class='edit-todo' value='learn html'>
-                        <button class='delete'>X</button>
-                    </article>
-                </li>
-                -->
-                <!-- example of completed item
-                <li>
-                    <article class='completed'>
-                        <button class='check'></button>
-                        <p class='complete'>learn css</p>
-                        <input type='text' class='edit-todo' value='learn css'>
-                        <button class='delete'>X</button>
-                    </article>
-                </li>
-                -->
-                <!-- example of item currently being edited
-                <li>
-                    <article class='editing'>
-                        <button class='check'></button>
-                        <p>learn javascript</p>
-                        <input type='text' class='edit-todo' value='learn javascript'>
-                        <button class='delete'>X</button>
-                    </article>
-                </li>
-                -->
             </ul>
 
             <footer>
-                <p class='remaining'><span class='incomplete-items'>0</span> items left</p>
+                <p class='remaining'><span class='incomplete-items'>{{todo.itemsLeft()}}</span> items left</p>
                 <nav>
                     <ul>
                         <li><button class='show-all active'>All</button></li>
