@@ -36,6 +36,7 @@
         completed: false,
         editing: false
       };
+      toDoFactoryObj.save(this.itemList);
     };
 
     this.keyPress = function keyPress(keyCode, item) {
@@ -55,6 +56,23 @@
         }
       });
     };
+
+    this.showAll = function showAll() {
+      console.log('showAll running');
+      this.filter = false;
+    };
+
+    this.showComplete = function showComplete() {
+      console.log('showCompleted running');
+      this.filter = {completed: false};
+    };
+
+    this.showActive = function showActive() {
+      console.log('showActive running');
+      this.filter = {completed: true};
+    };
+
+    this.showAll();
 
   }
 

@@ -7,17 +7,22 @@
 
   var toDoList = [];
 
-  window.toDoList = toDoList;
+  var localStorageKey = "storedItems";
+
+  if(!localStorage.storedItems){
+    localStorage.setItem(localStorageKey, JSON.stringify([]));
+  }
+
+  function updateLocalStorage(itemList) {
+    localStorage.setItem(localStorageKey, angular.toJson(itemList));
+    console.log(localStorage.localStorageKey);
+  }
 
   function toDoFactory() {
     return {
       itemList: toDoList,
-      save: pushToList
+      save: updateLocalStorage
     };
-  }
-
-  function pushToList() {
-    console.log('pushToList is running');
   }
 
 })();

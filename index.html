@@ -33,7 +33,7 @@ I'm done.
             </form>
 
             <ul class='items'>
-              <li ng-repeat="item in todo.itemList">
+              <li ng-repeat="item in todo.itemList | filter: todo.filter">
                 <article ng-class='{completed: item.completed, editing: item.editing}'>
                     <button ng-click="item.completed = !item.completed" class='check'></button>
                     <p ng-click="item.editing = !item.editing">{{item.text}}</p>
@@ -47,9 +47,9 @@ I'm done.
                 <p class='remaining'><span class='incomplete-items'>{{todo.itemsLeft()}}</span> items left</p>
                 <nav>
                     <ul>
-                        <li><button class='show-all active'>All</button></li>
-                        <li><button class='show-active'>Active</button></li>
-                        <li><button class='show-completed'>Completed</button></li>
+                        <li><button ng-click="todo.showAll()" class='show-all active'>All</button></li>
+                        <li><button ng-click="todo.showComplete()"class='show-active'>Active</button></li>
+                        <li><button ng-click="todo.showActive()" class='show-completed'>Completed</button></li>
                     </ul>
                 </nav>
                 <button ng-click="todo.deleteCompleted()" class='clear'>Clear completed</button>
