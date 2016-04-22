@@ -59,17 +59,23 @@
     };
 
     this.showAll = function showAll() {
-      console.log('showAll running');
+      this.allActive = true;
+      this.completedActive = false;
+      this.activeActive = false;
       this.filter = false;
     };
 
     this.showComplete = function showComplete() {
-      console.log('showCompleted running');
+      this.allActive = false;
+      this.completedActive = true;
+      this.activeActive = false;
       this.filter = {completed: false};
     };
 
     this.showActive = function showActive() {
-      console.log('showActive running');
+      this.allActive = false;
+      this.completedActive = false;
+      this.activeActive = true;
       this.filter = {completed: true};
     };
 
