@@ -33,6 +33,14 @@ I'm done.
             </form>
 
             <ul class='items'>
+              <li ng-repeat="item in todo.itemList">
+                <article>
+                    <button class='check'></button>
+                    <p>{{item.text}}</p>
+                    <input type='text' class='edit-todo' value='learn html'>
+                    <button class='delete'>X</button>
+                </article>
+              </li>
                 <!-- example of existing item (incomplete)
                 <li>
                     <article>

@@ -9,6 +9,8 @@
 
   function ToDoItemsController(toDoFactoryObj) {
 
+    this.itemList = toDoFactoryObj.itemList;
+
     this.newItem = {
       text: '',
       completed: false,
@@ -17,13 +19,11 @@
 
     this.addNewItem = function addNewItem() {
       toDoFactoryObj.itemList.push(this.newItem);
-      console.log(this.newItem);
       this.newItem = {
         text: '',
         completed: false,
         editing: false
       };
-      console.log(this.newItem);
     };
 
   }

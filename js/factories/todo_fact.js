@@ -10,7 +10,6 @@
   window.toDoList = toDoList;
 
   function toDoFactory() {
-    console.log(toDoList);
     return {
       itemList: toDoList,
       save: pushToList
