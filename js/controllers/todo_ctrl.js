@@ -56,6 +56,7 @@
           that.itemList.splice(i, 1);
         }
       });
+      toDoFactoryObj.save(this.itemList);
     };
 
     this.showAll = function showAll() {
